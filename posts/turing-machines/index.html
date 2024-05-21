@@ -1,259 +1,69 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Turing machines | Js Blog</title>
-<meta name="keywords" content="">
-<meta name="description" content="Description The turing machine model is not a real machine but rather a model which describes how a Computer would solve a formalized problem. It describes which requirements the algorithm has to ensure the turing machine can correctly execute. Any computer algorithm can be simulated with a turing machine. Parts Tape Infinitely long tape (acts like a memory in a normal computer) Squares on the tape are usually blank at the start The squares can have symbols written on them, in this case blank, zero and one (which is why it is a 3-symbol turing machine) TODO Describe Multi tape turing machines here Head Has a head which is positioned over one of the squares on the tape The head can perform 3 functions: Read the symbol in the current square under the head Edit the symbol (by writing a new one or erasing it) Move the tape left or right by one square so that the machine can read and edit the symbol on a neighbouring square Machine state The machine can have a set of states, the state changes what the machine does with the presented information.">
-<meta name="author" content="Janik">
-<link rel="canonical" href="https://janikkinaj.github.io/posts/turing-machines/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://janikkinaj.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://janikkinaj.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://janikkinaj.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://janikkinaj.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://janikkinaj.github.io/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://janikkinaj.github.io/posts/turing-machines/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
-  
-
-<meta property="og:title" content="Turing machines" />
-<meta property="og:description" content="Description The turing machine model is not a real machine but rather a model which describes how a Computer would solve a formalized problem. It describes which requirements the algorithm has to ensure the turing machine can correctly execute. Any computer algorithm can be simulated with a turing machine. Parts Tape Infinitely long tape (acts like a memory in a normal computer) Squares on the tape are usually blank at the start The squares can have symbols written on them, in this case blank, zero and one (which is why it is a 3-symbol turing machine) TODO Describe Multi tape turing machines here Head Has a head which is positioned over one of the squares on the tape The head can perform 3 functions: Read the symbol in the current square under the head Edit the symbol (by writing a new one or erasing it) Move the tape left or right by one square so that the machine can read and edit the symbol on a neighbouring square Machine state The machine can have a set of states, the state changes what the machine does with the presented information." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://janikkinaj.github.io/posts/turing-machines/" /><meta property="article:section" content="posts" />
-
-
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Turing machines"/>
-<meta name="twitter:description" content="Description The turing machine model is not a real machine but rather a model which describes how a Computer would solve a formalized problem. It describes which requirements the algorithm has to ensure the turing machine can correctly execute. Any computer algorithm can be simulated with a turing machine. Parts Tape Infinitely long tape (acts like a memory in a normal computer) Squares on the tape are usually blank at the start The squares can have symbols written on them, in this case blank, zero and one (which is why it is a 3-symbol turing machine) TODO Describe Multi tape turing machines here Head Has a head which is positioned over one of the squares on the tape The head can perform 3 functions: Read the symbol in the current square under the head Edit the symbol (by writing a new one or erasing it) Move the tape left or right by one square so that the machine can read and edit the symbol on a neighbouring square Machine state The machine can have a set of states, the state changes what the machine does with the presented information."/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://janikkinaj.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Turing machines",
-      "item": "https://janikkinaj.github.io/posts/turing-machines/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Turing machines",
-  "name": "Turing machines",
-  "description": "Description The turing machine model is not a real machine but rather a model which describes how a Computer would solve a formalized problem. It describes which requirements the algorithm has to ensure the turing machine can correctly execute. Any computer algorithm can be simulated with a turing machine. Parts Tape Infinitely long tape (acts like a memory in a normal computer) Squares on the tape are usually blank at the start The squares can have symbols written on them, in this case blank, zero and one (which is why it is a 3-symbol turing machine) TODO Describe Multi tape turing machines here Head Has a head which is positioned over one of the squares on the tape The head can perform 3 functions: Read the symbol in the current square under the head Edit the symbol (by writing a new one or erasing it) Move the tape left or right by one square so that the machine can read and edit the symbol on a neighbouring square Machine state The machine can have a set of states, the state changes what the machine does with the presented information.",
-  "keywords": [
-    
-  ],
-  "articleBody": "Description The turing machine model is not a real machine but rather a model which describes how a Computer would solve a formalized problem. It describes which requirements the algorithm has to ensure the turing machine can correctly execute. Any computer algorithm can be simulated with a turing machine. Parts Tape Infinitely long tape (acts like a memory in a normal computer) Squares on the tape are usually blank at the start The squares can have symbols written on them, in this case blank, zero and one (which is why it is a 3-symbol turing machine) TODO Describe Multi tape turing machines here Head Has a head which is positioned over one of the squares on the tape The head can perform 3 functions: Read the symbol in the current square under the head Edit the symbol (by writing a new one or erasing it) Move the tape left or right by one square so that the machine can read and edit the symbol on a neighbouring square Machine state The machine can have a set of states, the state changes what the machine does with the presented information. For example the machine in state zero may write the Symbol read to the next square but in state one may replace a zero with a one and a one with a zero.\nDeterministic vs non deterministic Whereas In a “normal” turing machine which is deterministic there is a preperscribed action for each state and only one possible action in a non deterministic turing machine the set of rules may prescribe more than one action to be performed for any given situation. For example: An X on the tape in state 4 may allow the tape to write a Z, move right and switch to state 5, or Write a X, move left and stay in state 4.\nFormal definition A Turing machine can be formally defined as a tuple of 7 variables \\((Q,q_0,F,\\Gamma,b,\\Sigma,\\delta)\\)\n\\(Q\\) is a finite , set of states (that contains atleast one state) \\(q_0 \\in Q\\) is the initial state, and is one of the states in \\(Q\\) \\(F \\subset Q\\) is the set of accepting states, these are the states that mean the machine has finished \\(\\Gamma\\) is a finite, non empty set of tape symbols (such as 0, 1 or \\(\\Gamma\\)) \\(b \\in \\Gamma\\) is the blank symbol \\(\\Sigma \\subset \\Gamma\\) is the set of input symbols and is a subset of the tape symbols \\(\\delta : (Q /\\ F) \\cdot \\Gamma \\rightarrow Q \\cdot \\Gamma \\cdot \\{L,R\\}\\) is the transition function, which is a partial function The transition function is the \"program\" that specifies each action given the current state and the symbol the machine is currently reading A turing machine's operations sequence is \\(((q’_s,h_s,(t_{s,p})^\\infty_{p=-\\infty}\u003e))^\\infty_{s=0}\\)\n\\(q_s\\) is the state of the tape head in the s-th step \\(h_s\\) is the position of the tape head in the s-th step \\(t_{s,p}\\) is the content of the tape in the s-th step and p-th position Example printing 110 Trivial example that shows printing 110 to a blank tape Simple program try to convert ones to zeros and vice versa What the machine should do:\nread the current symbol If the symbol is a zero or one write the opposing symbol instead Move the tape one right if the symbol is blank end the algorithm As a state table:\nState Symbol read Write instruction Move instruction Next state State 0 Blank None None Stop state State 0 0 Write 1 Move the tape to the right State 0 State 0 1 Write 0 Move the tape to the right State 0 Sources Cambride university explanation Brilliant turing machine definition cornell definition of turing machine PDf_download of cornell wikipedia: nondeterministic turing machine ",
-  "wordCount" : "624",
-  "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "Janik"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://janikkinaj.github.io/posts/turing-machines/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Js Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://janikkinaj.github.io/favicon.ico"
-    }
-  }
-}
-</script>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Turing machines &ndash; Js Blog</title>
+	<link rel="stylesheet" href="/css/styles.css">
+	<link id="theme_css" rel="stylesheet" href="/css/themes/dark.css">
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://janikkinaj.github.io/" accesskey="h" title="Js Blog (Alt + H)">Js Blog</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
+<body>
+	<input class="show-hide-menu-input" style="display:none;" autocomplete="off" type="checkbox" id="toggle-1">
+	<label class="overlay" for="toggle-1"></label>
+	<div class="main">
+		<header class="header">
+			<div class="header-content">
+				<div class="title">
+					<a href="https://janikkinaj.github.io/">Js Blog</a>
+				</div>
+				<div>
+					<div class="header-right">
+						<label id="show-hide-menu-label" class="clickable-header-label" for="toggle-1">
+							<img class="color-adapting-image" width="30" src="/images/hamburger.svg" alt="menu button">
+						</label>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main class="body">
+			<div class="body-content">
+  <header class="title-header">
+    <h1>Turing machines</h1>
+    <div class="title-header-date">
+    </div>
     
-    <h1 class="post-title entry-hint-parent">
-      Turing machines
-    </h1>
-    <div class="post-meta">3 min&nbsp;·&nbsp;Janik
-
-</div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
-
-        <div class="inner"><ul>
-                <li>
-                    <a href="#description" aria-label="Description">Description</a></li>
-                <li>
-                    <a href="#parts" aria-label="Parts">Parts</a><ul>
-                        
-                <li>
-                    <a href="#tape" aria-label="Tape">Tape</a><ul>
-                        
-                <li>
-                    <a href="#describe-multi-tape-turing-machines-here" aria-label="TODO Describe Multi tape turing machines here">TODO Describe Multi tape turing machines here</a></li></ul>
-                </li>
-                <li>
-                    <a href="#head" aria-label="Head">Head</a></li>
-                <li>
-                    <a href="#machine-state" aria-label="Machine state">Machine state</a></li></ul>
-                </li>
-                <li>
-                    <a href="#deterministic-vs-non-deterministic" aria-label="Deterministic vs non deterministic">Deterministic vs non deterministic</a></li>
-                <li>
-                    <a href="#formal-definition" aria-label="Formal definition">Formal definition</a></li>
-                <li>
-                    <a href="#example" aria-label="Example">Example</a><ul>
-                        
-                <li>
-                    <a href="#printing-110" aria-label="printing 110">printing 110</a></li>
-                <li>
-                    <a href="#simple-program" aria-label="Simple program">Simple program</a></li></ul>
-                </li>
-                <li>
-                    <a href="#sources" aria-label="Sources">Sources</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
-
-  <div class="post-content"><h2 id="description">Description<a hidden class="anchor" aria-hidden="true" href="#description">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>The turing machine model is not a real machine but rather a model which
-</span></span><span style="display:flex;"><span>describes how a Computer would solve a formalized problem.
-</span></span><span style="display:flex;"><span>It describes which requirements the algorithm has to ensure the turing machine can correctly execute.
-</span></span><span style="display:flex;"><span>Any computer algorithm can be simulated with a turing machine.
-</span></span></code></pre></div><h2 id="parts">Parts<a hidden class="anchor" aria-hidden="true" href="#parts">#</a></h2>
-<h3 id="tape">Tape<a hidden class="anchor" aria-hidden="true" href="#tape">#</a></h3>
+  </header>
+  <h2 id="description">Description<aside class="heading-anchor"><a href="#description" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">The turing machine model is not a real machine but rather a model which
+</span></span><span class="line"><span class="cl">describes how a Computer would solve a formalized problem.
+</span></span><span class="line"><span class="cl">It describes which requirements the algorithm has to ensure the turing machine can correctly execute.
+</span></span><span class="line"><span class="cl">Any computer algorithm can be simulated with a turing machine.
+</span></span></code></pre></div><h2 id="parts">Parts<aside class="heading-anchor"><a href="#parts" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h2>
+<h3 id="tape">Tape<aside class="heading-anchor"><a href="#tape" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h3>
 <ul>
 <li>Infinitely long tape (acts like a memory in a normal computer)</li>
 <li>Squares on the tape are usually blank at the start</li>
 <li>The squares can have symbols written on them, in this case blank, zero and one (which is why it is a 3-symbol turing machine)</li>
 </ul>
-<h4 id="describe-multi-tape-turing-machines-here"><span class="org-todo todo TODO">TODO</span> Describe Multi tape turing machines here<a hidden class="anchor" aria-hidden="true" href="#describe-multi-tape-turing-machines-here">#</a></h4>
-<h3 id="head">Head<a hidden class="anchor" aria-hidden="true" href="#head">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Has a head which is positioned over one of the squares on the tape
-</span></span><span style="display:flex;"><span>The head can perform 3 functions:
+<h4 id="describe-multi-tape-turing-machines-here"><span class="org-todo todo TODO">TODO</span> Describe Multi tape turing machines here<aside class="heading-anchor"><a href="#describe-multi-tape-turing-machines-here" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h4>
+<h3 id="head">Head<aside class="heading-anchor"><a href="#head" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Has a head which is positioned over one of the squares on the tape
+</span></span><span class="line"><span class="cl">The head can perform 3 functions:
 </span></span></code></pre></div><ul>
 <li>Read the symbol in the current square under the head</li>
 <li>Edit the symbol (by writing a new one or erasing it)</li>
 <li>Move the tape left or right by one square so that the machine can read and edit the symbol on a neighbouring square</li>
 </ul>
-<h3 id="machine-state">Machine state<a hidden class="anchor" aria-hidden="true" href="#machine-state">#</a></h3>
+<h3 id="machine-state">Machine state<aside class="heading-anchor"><a href="#machine-state" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h3>
 <p>The machine can have a set of states, the state changes what the machine does with the presented information.
 For example the machine in state zero may write the Symbol read to the next square but in state one may replace a zero with a one and a one with a zero.</p>
-<h2 id="deterministic-vs-non-deterministic">Deterministic vs non deterministic<a hidden class="anchor" aria-hidden="true" href="#deterministic-vs-non-deterministic">#</a></h2>
-<figure>
-    <img loading="lazy" src="/ox-hugo/2024-05-20_16-13-57_screenshot.png"/> 
+<h2 id="deterministic-vs-non-deterministic">Deterministic vs non deterministic<aside class="heading-anchor"><a href="#deterministic-vs-non-deterministic" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h2>
+<figure><img src="/ox-hugo/2024-05-20_16-13-57_screenshot.png">
 </figure>
 
 <p>Whereas In a &ldquo;normal&rdquo; turing machine which is <code>deterministic</code> there is a preperscribed action for each state and only one possible action in a <code>non deterministic turing machine</code> the set of rules may prescribe more than one action to be performed for any given situation. For example: An X on the tape in state 4 may allow the tape to write a Z, move right and switch to state 5, or Write a X, move left and stay in state 4.</p>
-<h2 id="formal-definition">Formal definition<a hidden class="anchor" aria-hidden="true" href="#formal-definition">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>A Turing machine can be formally defined as a tuple of 7 variables
+<h2 id="formal-definition">Formal definition<aside class="heading-anchor"><a href="#formal-definition" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">A Turing machine can be formally defined as a tuple of 7 variables
 </span></span></code></pre></div><p>\((Q,q_0,F,\Gamma,b,\Sigma,\delta)\)</p>
 <ul>
 <li>\(Q\) is a finite , set of states (that contains atleast one state)</li>
@@ -264,39 +74,34 @@ For example the machine in state zero may write the Symbol read to the next squa
 <li>\(\Sigma \subset \Gamma\) is the set of input symbols and is a subset of the tape symbols</li>
 <li>\(\delta : (Q /\ F) \cdot \Gamma \rightarrow Q \cdot \Gamma \cdot \{L,R\}\) is the transition function, which is a partial function</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>The transition function is the &#34;program&#34; that specifies each action given the current state and the symbol the machine is currently reading
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>A turing machine&#39;s operations sequence is
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">The transition function is the &#34;program&#34; that specifies each action given the current state and the symbol the machine is currently reading
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">A turing machine&#39;s operations sequence is
 </span></span></code></pre></div><p>\(((q&rsquo;_s,h_s,(t_{s,p})^\infty_{p=-\infty}&gt;))^\infty_{s=0}\)</p>
 <ul>
 <li>\(q_s\) is the state of the tape head in the s-th step</li>
 <li>\(h_s\) is the position of the tape head in the s-th step</li>
 <li>\(t_{s,p}\) is the content of the tape in the s-th step and p-th position</li>
 </ul>
-<h2 id="example">Example<a hidden class="anchor" aria-hidden="true" href="#example">#</a></h2>
-<h3 id="printing-110">printing 110<a hidden class="anchor" aria-hidden="true" href="#printing-110">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Trivial example that shows printing 110 to a blank tape
-</span></span></code></pre></div><figure>
-    <img loading="lazy" src="/ox-hugo/turing_example_1.png"/> 
+<h2 id="example">Example<aside class="heading-anchor"><a href="#example" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h2>
+<h3 id="printing-110">printing 110<aside class="heading-anchor"><a href="#printing-110" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Trivial example that shows printing 110 to a blank tape
+</span></span></code></pre></div><figure><img src="/ox-hugo/turing_example_1.png">
 </figure>
 
-<figure>
-    <img loading="lazy" src="/ox-hugo/turing_example_2.png"/> 
+<figure><img src="/ox-hugo/turing_example_2.png">
 </figure>
 
-<figure>
-    <img loading="lazy" src="/ox-hugo/turing_example_3.png"/> 
+<figure><img src="/ox-hugo/turing_example_3.png">
 </figure>
 
-<figure>
-    <img loading="lazy" src="/ox-hugo/turing_example_4.png"/> 
+<figure><img src="/ox-hugo/turing_example_4.png">
 </figure>
 
-<figure>
-    <img loading="lazy" src="/ox-hugo/turing_example_5.png"/> 
+<figure><img src="/ox-hugo/turing_example_5.png">
 </figure>
 
-<h3 id="simple-program">Simple program<a hidden class="anchor" aria-hidden="true" href="#simple-program">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>try to convert ones to zeros and vice versa
+<h3 id="simple-program">Simple program<aside class="heading-anchor"><a href="#simple-program" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">try to convert ones to zeros and vice versa
 </span></span></code></pre></div><p>What the machine should do:</p>
 <ul>
 <li>read the current symbol
@@ -345,11 +150,10 @@ For example the machine in state zero may write the Symbol read to the next squa
 </tr>
 </tbody>
 </table>
-<figure>
-    <img loading="lazy" src="/ox-hugo/state_table_turing.png"/> 
+<figure><img src="/ox-hugo/state_table_turing.png">
 </figure>
 
-<h2 id="sources">Sources<a hidden class="anchor" aria-hidden="true" href="#sources">#</a></h2>
+<h2 id="sources">Sources<aside class="heading-anchor"><a href="#sources" aria-label="Anchor"><img src="/images/chain-link.svg" class="color-adapting-image" height="20"></a></aside></h2>
 <ul>
 <li><a href="https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/turing-machine/one.html">Cambride university explanation</a></li>
 <li><a href="https://brilliant.org/wiki/turing-machines/">Brilliant turing machine definition</a></li>
@@ -359,132 +163,13 @@ For example the machine in state zero may write the Symbol read to the next squa
 </ul>
 
 
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2024 <a href="https://janikkinaj.github.io/">Js Blog</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
-
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
+			</div>
+		</main>
+	</div>
+	<hr class="dont-show">
+	<footer class="footer">
+		<p><a href="https://github.com/JanikkinaJ">Github profile</a></p>
+	</footer>
 </body>
 
   
