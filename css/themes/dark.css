@@ -1,17 +1,15 @@
 @import url("dark-chroma.css");
 
 a {
-	color: #A1A1EA;
+	color: #FF4365;
 }
 
-.title {
-    color: #ffffff;
-    text-shadow: 0 0 3px black, 0 0 5px #00ffff;
+h1, h2, h3, h4, h5 {
+    color: #FF4365;
 }
-
 
 .highlight > * {
-	border-color: #505050;
+	border-color: #F9C80E;
 }
 
 :not(pre) > code {
@@ -32,8 +30,11 @@ a > code {
 }
 
 body {
-	color: rgb(210, 210, 210);
-	background-color: rgb(27, 27, 27);
+	color: #F9C80E;
+	background-color: #791E94;
+	background-image: url(../../images/sunset.jpg);
+	background-attachment: fixed;
+	background-size: 100% auto;
 }
 
 blockquote {
@@ -53,7 +54,9 @@ figure.color-adapting-image img {
 
 .header {
 	background-color: rgb(40, 40, 40); /* still want a background color before the image loads */
-	background-image: url(../../images/header-bg-dark.jpg);
+	background-image: url(../../images/vector.jpg);
+	color: white; 
+	text-shadow:1px 1px 10px cyan, 1px 1px 10px black;
 }
 
 .links, .links li {
@@ -61,7 +64,7 @@ figure.color-adapting-image img {
 }
 
 .main {
-	background-color: rgb(14, 14, 14);
+	background-color: #540D6E;
 	box-shadow: none;
 }
 
@@ -78,9 +81,14 @@ figure.color-adapting-image img {
 }
 
 .table-of-contents {
-	border-color: #505050;
-	background-color: #1A1A1A;
+	border-color: #F9C80E;
+	background-color: #332641;
 }
+
+.table-of-contents-title {
+	color: #FF4365;
+}
+
 
 .notice {
 	border-width: 2px;
