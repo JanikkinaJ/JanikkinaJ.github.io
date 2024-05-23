@@ -33,8 +33,10 @@ body {
 	color: #F9C80E;
 	background-color: #791E94;
 	background-image: url(../../images/sunset.jpg);
+	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: 100% auto;
+	background-size: cover;
+	background-position: center; 
 }
 
 blockquote {
