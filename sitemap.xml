@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://janikkinaj.github.io/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://janikkinaj.github.io/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/komplexity/</loc>
+    <loc>https://janikkinaj.github.io/tags/komplexit%C3%A4t/</loc>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://janikkinaj.github.io/posts/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://janikkinaj.github.io/tags/</loc>
   </url><url>
-    <loc>http://localhost:1313/posts/turing-machines/</loc>
+    <loc>https://janikkinaj.github.io/posts/turing-machines/</loc>
   </url>
 </urlset>

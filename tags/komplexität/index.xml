@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Komplexität on Js Blog</title>
-    <link>http://localhost:1313/tags/komplexit%C3%A4t/</link>
+    <link>https://janikkinaj.github.io/tags/komplexit%C3%A4t/</link>
     <description>Recent content in Komplexität on Js Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/tags/komplexit%C3%A4t/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://janikkinaj.github.io/tags/komplexit%C3%A4t/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Turing-machines</title>
-      <link>http://localhost:1313/posts/turing-machines/</link>
+      <link>https://janikkinaj.github.io/posts/turing-machines/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/turing-machines/</guid>
+      <guid>https://janikkinaj.github.io/posts/turing-machines/</guid>
       <description>Description The turing machine model is not a real machine but rather a model which describes how a Computer would solve a formalized problem. It describes which requirements the algorithm has to ensure the turing machine can correctly execute. Any computer algorithm can be simulated with a turing machine. Parts Tape Infinitely long tape (acts like a memory in a normal computer) Squares on the tape are usually blank at the start The squares can have symbols written on them, in this case blank, zero and one (which is why it is a 3-symbol turing machine) TODO Describe Multi tape turing machines here Head Has a head which is positioned over one of the squares on the tape The head can perform 3 functions: Read the symbol in the current square under the head Edit the symbol (by writing a new one or erasing it) Move the tape left or right by one square so that the machine can read and edit the symbol on a neighbouring square Machine state The machine can have a set of states, the state changes what the machine does with the presented information.</description>
     </item>
   </channel>
