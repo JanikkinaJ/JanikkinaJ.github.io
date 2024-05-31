@@ -499,12 +499,12 @@ body {
 
 @media only screen and (max-width: 700pt) {
 	.main {
-		width: 100%;
 		margin-top: 0;
 		margin-bottom: 0;
 	}
 
 	body {
+		background: none;
 		font-size: 12pt;
 		background-color: white;
 	}
