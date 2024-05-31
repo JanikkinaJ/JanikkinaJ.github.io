@@ -2,6 +2,7 @@
 
 a {
 	color: #FF4365;
+	text-align: center;
 }
 
 img {
@@ -146,5 +147,18 @@ figure.color-adapting-image img {
 @media only screen and (max-width: 400pt) {
 	.links {
 		background-color: rgb(23, 23, 23);
+	}
+}
+
+@media only screen and (max-width: 700pt) {
+	.main {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	body {
+		background: none;
+		font-size: 12pt;
+		background-color: #791E94;
 	}
 }
